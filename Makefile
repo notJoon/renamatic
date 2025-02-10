@@ -1,4 +1,3 @@
-# 변수 정의
 BINARY_NAME=renamatic
 BUILD_DIR=build
 CMD_DIR=cmd/renamatic
@@ -12,7 +11,6 @@ build:
 	@echo "✅ Build $(BUILD_DIR)/$(BINARY_NAME)"
 
 install:
-	@echo "📦 Install renamatic"
 	@go install ./$(CMD_DIR)
 	@echo "✅ Install renamatic"
 

@@ -11,7 +11,13 @@ Renamatic is a CLI tool that automates the renaming of function calls in `.gno` 
 
 ## Installation
 
-Build the CLI tool using Go:
+Run `make install` to install the CLI tool (see [Makefile](Makefile) for more commands).
+
+```bash
+make install
+```
+
+Alternatively, you can build the CLI tool using Go:
 
 ```bash
 go build -o renamatic ./cmd/renamatic

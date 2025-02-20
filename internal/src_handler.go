@@ -9,6 +9,7 @@ import (
 	"go/token"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 var (
@@ -34,7 +35,7 @@ func newGnoFileProcessor(mapping Mapping[string, string], transformer ASTTransfo
 
 // ShouldProcess checks if the given file should be processed.
 func (p *GnoFileProcessor) ShouldProcess(path string) bool {
-	return filepath.Ext(path) == ".gno"
+	return strings.HasSuffix(filepath.Ext(path), ".gno")
 }
 
 // ProcessFile processes a single .gno file.

@@ -1,8 +1,8 @@
 GetCallerAt: CallerAt
 GetOrigSend: OriginSend
 GetOrigCaller: OriginCaller
-TestSetOrigSend: std.TestSetOriginSend
-TestSetOrigCaller: std.TestSetOriginCaller
+TestSetOrigSend: TestSetOriginSend
+TestSetOrigCaller: TestSetOriginCaller
 Addr: Address
 PrevRealm: PreviousRealm
 GetChainID: ChainID

@@ -3,6 +3,7 @@ GetOrigSend: OriginSend
 GetOrigCaller: OriginCaller
 TestSetOrigSend: TestSetOriginSend
 TestSetOrigCaller: TestSetOriginCaller
+TestSetOrigPkgAddr: TestSetOriginPkgAddress
 Addr: Address
 PrevRealm: PreviousRealm
 GetChainID: ChainID

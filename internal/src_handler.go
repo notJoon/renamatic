@@ -9,7 +9,7 @@ import (
 	"go/token"
 	"os"
 	"path/filepath"
-	"strings"
+	"regexp"
 )
 
 var (
@@ -22,6 +22,12 @@ type GnoFileProcessor struct {
 	mapping     Mapping[string, string]
 	transformer ASTTransformer
 	parseMode   parser.Mode
+	// The test results change depending on the execution order,
+	// such as when previous tests affect subsequent tests.
+	// Therefore, sometimes to prevent execution, I set file extensions
+	// to something like .gnoA instead of `.gno`.
+	// This regex handles such situations.
+	extPattern *regexp.Regexp
 }
 
 // newGnoFileProcessor creates a new GnoFileProcessor with the given mapping and transformer.
@@ -30,12 +36,13 @@ func newGnoFileProcessor(mapping Mapping[string, string], transformer ASTTransfo
 		mapping:     mapping,
 		transformer: transformer,
 		parseMode:   parser.ParseComments,
+		extPattern:  regexp.MustCompile(`\.gno[A-Za-z0-9]*$`), // recognize .gno, .gnoA things.
 	}
 }
 
 // ShouldProcess checks if the given file should be processed.
 func (p *GnoFileProcessor) ShouldProcess(path string) bool {
-	return strings.HasSuffix(filepath.Ext(path), ".gno")
+	return p.extPattern.MatchString(filepath.Ext(path))
 }
 
 // ProcessFile processes a single .gno file.
